@@ -6,6 +6,7 @@ module Parsing.Parsing (module Parsing.Parsing, module Control.Applicative) wher
 
 import Control.Applicative
 import Data.Char
+import Jq.Json
 
 -- Basic definitions
 
@@ -73,6 +74,9 @@ letter = sat isAlpha
 
 alphanum :: Parser Char
 alphanum = sat isAlphaNum
+
+printable :: Parser Char 
+printable = sat isPrint
 
 char :: Char -> Parser Char
 char x = sat (== x)
