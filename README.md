@@ -1,4 +1,4 @@
-<img src=resources/haskell_jq_recreation_logo.png alt="Haskell JQ Clone Logo" width="592" height="183">
+<img src=resources/haskell_jq_recreation_logo.png alt="Haskell JQ Clone Logo" width="296" height="91">
 
 --------------------------------------------------------------------------------
 [![BSD-3-License](https://img.shields.io/github/license/johanneshagspiel/haskell-jq-recreation)](LICENSE)
@@ -7,13 +7,34 @@
 
 # Haskell JQ Recreation
 
-This repository contains a recreationg of the JSON processor jq in Haskell.
+This repository contains a recreation of the JSON processor jq in Haskell.
 
 ## Features
 
-These scripts cover a range of topics of Apache Flink such as:
+This recreation has implemented most of the functionality of the original JSON processor jq such as as:
 
-- 
+-  handling valid JSON types including:
+    - `null`
+    - numbers (including floating-point and E-notation)
+    - strings (with support for escape characters)
+    - Booleans
+    - Arrays
+    - JSON Objects
+- applying all basic filters such as:  
+    - the identity filter `.`
+    - parenthesis '()'
+    - object indexing, both identifier `.field` and generic `.["field"]`. 
+    - optional object indexing `.field?` (and `.["field"]?`)
+    - array index and slice `.[0]`, `.[0:10]`. 
+    - array/object value iterator `.[]`, `.[1,2,3]`. 
+    - optional counterparts for indexing, slicing and iterators
+    - comma operator `op1 , op2`
+    - pipe operator `op1 | op2` 
+- simple and complex value constructors
+- conditionals and comparisons including:
+    - "equal" and "not equal" operators `==`, `!=`
+    - if-then-else expression `if A then B else C end`.
+    - comparison operators for numbers `<`, `<=`, `>`, `>=`
 
 ## Tools
 
@@ -23,10 +44,12 @@ These scripts cover a range of topics of Apache Flink such as:
 
 ## Installation Process
 
-It is assumed that both a [Java JDK](https://openjdk.org/) and an IDE such as [IntelliJ](https://www.jetbrains.com/idea/) are installed and that the users operating system is Windows.
+It is assumed that 
 
-- Install the Scala support plugin for your IDE.
-- Import this repository as a Maven project and resolve all dependencies.
+## Contributors
+
+This template for this program was originally created by:
+- [Bohdan Liesnikov](https://github.com/liesnikov)
 
 ## Licence
 

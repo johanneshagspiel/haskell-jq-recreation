@@ -21,7 +21,7 @@ compile (Identifier identifier) _ =  Left "Error - there is no object to access"
 
 compile (OptionalIdentifier optionalIdentifier) (JObject entry_map) = return (identifierHelper (Map.lookup optionalIdentifier entry_map))
 compile (OptionalIdentifier optionalIdentifier) JNull  = return [JNull]
-compile (OptionalIdentifier optionalIdentifier) _ = return []              -- is this good?
+compile (OptionalIdentifier optionalIdentifier) _ = return []              
 
 
 compile (ArrayIndex index) (JArray array) = if isInt index then arrayIndexHelper (round index) array else return [JNull]
@@ -221,19 +221,6 @@ equalityHelper (Left error_1) (Left error_2) = Left ("\n" ++ error_1 ++ "\n" ++ 
 equalityHelper2 :: [JSON] -> [JSON] -> [JSON]
 equalityHelper2 [] second_list = []
 equalityHelper2 (n:ns) second_list = (map (\x -> JBoolean (x == n)) second_list) ++ (equalityHelper2 ns second_list)
-
--- objectValueHelper :: [Filter] -> JSON -> [Either String [JSON]]
--- objectValueHelper filters json = map (\x -> compile x json) filters
-
--- combineJProgramsIntoObject :: [Either String [JSON]] -> [String] -> Either String [JSON]
--- combineJProgramsIntoObject results keys = if null (lefts results) then first_case else second_case where
---     first_case = objectValueHelper2 keys (concat (rights results))
---     second_case = Left( foldl ((++) . (++ "\n")) "" (lefts results))
-
--- objectValueHelper2 :: [String] -> [JSON] -> Either String [JSON]
--- objectValueHelper2 keys values = if length keys == length values then first_case else second_case where
---     first_case = Right ([JObject (createMapForObject keys values)])
---     second_case = Right ([JString "More values than keys"])
 
 createMapForObject :: [String] -> [JSON] -> Map.Map String JSON
 createMapForObject keys values = createMapForObject2 (zip keys values) Map.empty 
