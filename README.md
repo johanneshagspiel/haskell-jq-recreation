@@ -49,7 +49,7 @@ It is assumed that an IDE such as [Visual Studio Code](https://code.visualstudio
 
 - Download and install the Haskell tool [Stack](https://docs.haskellstack.org/en/stable/README/)
 - Open this repository in Visual Studio Code
-- Run the command `stack init`, `stack build` and then `stack install` in the terminal
+- Run the commands `stack init`, `stack build` and then `stack install` in the terminal
 
 To run jq-clone, use `echo <input.json> | jq-clone -- <filter>` like in this example:
 
