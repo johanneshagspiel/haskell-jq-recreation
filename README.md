@@ -11,9 +11,9 @@ This repository contains a recreation of the JSON processor [jq](https://stedola
 
 ## Features
 
-This recreation has implemented most of the functionality of the original JSON processor jq such as as:
+This recreation has implemented most of the functionality of jq such as as:
 
--  handling valid JSON types including:
+-  handling all valid JSON types including:
     - `null`
     - numbers (including floating-point and E-notation)
     - strings (with support for escape characters)
@@ -25,26 +25,35 @@ This recreation has implemented most of the functionality of the original JSON p
     - parenthesis '()'
     - object indexing, both identifier `.field` and generic `.["field"]`. 
     - optional object indexing `.field?` (and `.["field"]?`)
-    - array index and slice `.[0]`, `.[0:10]`. 
-    - array/object value iterator `.[]`, `.[1,2,3]`. 
-    - optional counterparts for indexing, slicing and iterators
-    - comma operator `op1 , op2`
-    - pipe operator `op1 | op2` 
+    - the array index and slice `.[0]`, `.[0:10]`. 
+    - the array/object value iterator `.[]`, `.[1,2,3]`. 
+    - the optional counterparts for indexing, slicing and iterators
+    - the comma operator `op1 , op2`
+    - the pipe operator `op1 | op2` 
 - simple and complex value constructors
-- conditionals and comparisons including:
+- handling conditionals and comparisons including:
     - "equal" and "not equal" operators `==`, `!=`
-    - if-then-else expression `if A then B else C end`.
-    - comparison operators for numbers `<`, `<=`, `>`, `>=`
+    - if-then-else expressions `if A then B else C end`.
+    - comparison operatorss for numbers `<`, `<=`, `>`, `>=`
 
 ## Tools
 
 | Purpose                                                        | Name                                      |
 |----------------------------------------------------------------|-------------------------------------------|
-| Programming language                                           | [Haskell](https://www.haskell.org/)          |
+| Programming language                                           | [Haskell](https://www.haskell.org/)       |
+| Build tool                                           | [Stack](https://docs.haskellstack.org/en/stable/README/)       |
 
 ## Installation Process
 
-It is assumed that 
+It is assumed that an IDE such as [Visual Studio Code](https://code.visualstudio.com/) is installed and that the users operating system is Windows.
+
+- Download and install the Haskell tool [Stack](https://docs.haskellstack.org/en/stable/README/)
+- Open this repository in Visual Studio Code
+- Run the command `stack build` and then `stack install` in the terminal
+
+To run jq-clone, use `echo <input.json> | jq-clone -- <filter>` like in this example:
+
+    echo '{"this" : 2, "that" : 3}' | jq-clone '.this > .that'
 
 ## Contributors
 
